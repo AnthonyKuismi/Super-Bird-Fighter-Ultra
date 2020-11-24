@@ -15,6 +15,7 @@ class Character:SKSpriteNode{
     var x_direction = ""
     var isWalk = false
     var isFly = false
+    var punch = false
     
     var max_jumps: CGFloat = 0
     var jump_velocity: CGFloat = 0
@@ -44,12 +45,13 @@ class Character:SKSpriteNode{
         x_max_speed = max_x_speed
         x_acc = acc
         CharacterSize = size
-        self.physicsBody = SKPhysicsBody(rectangleOf: CharacterSize)
+        self.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: run_animation_sprite_name + "0"), size: CharacterSize)
         self.physicsBody?.affectedByGravity = true
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.categoryBitMask = 1
         self.physicsBody?.collisionBitMask = 2
         self.physicsBody?.contactTestBitMask = 2
+    self.physicsBody?.mass = 0.4
     }
     
     public func setAnimations(run_sprite:String,run_folder:String,fly_sprite:String,fly_folder:String,attack_sprite:String,attack_folder:String){
@@ -89,7 +91,19 @@ class Character:SKSpriteNode{
 
     public func update_character(){
       
-        if x_direction == "right" && !isFly{
+        
+        
+        if punch{
+            self.removeAllActions()
+            if x_direction == "left"{
+                self.xScale = -1
+            }else{
+                self.xScale = 1
+            }
+            setTexture(folderName: attack_animation_folder_name, sprite: self, spriteName: attack_animation_sprite_name,speed: 100)
+            punch = false
+        }
+        else if x_direction == "right" && !isFly{
             if (self.physicsBody?.velocity.dx)! < x_max_speed{
                 self.physicsBody?.velocity.dx += x_acc
                 if (!isWalk){
