@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		765ECAEA256C1DD400E7AC78 /* Penguin_attack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 765ECAE9256C1DD400E7AC78 /* Penguin_attack.atlas */; };
+		765ECAEA256C1DD400E7AC78 /* penguin_punch_folder.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 765ECAE9256C1DD400E7AC78 /* penguin_punch_folder.atlas */; };
 		765ECAED256C1E1100E7AC78 /* Penguin_Move.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 765ECAEC256C1E1100E7AC78 /* Penguin_Move.atlas */; };
 		765ECAF0256C1E3600E7AC78 /* Penguin_fly.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 765ECAEF256C1E3500E7AC78 /* Penguin_fly.atlas */; };
 		765ECAF3256D6ECB00E7AC78 /* ChickenTheme1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 765ECAF2256D6ECB00E7AC78 /* ChickenTheme1.mp3 */; };
@@ -23,10 +23,11 @@
 		76E35FA3254719FA00726ADA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76E35FA1254719FA00726ADA /* Main.storyboard */; };
 		76E35FA5254719FD00726ADA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76E35FA4254719FD00726ADA /* Assets.xcassets */; };
 		76F62151254BB61800703779 /* PlayerWalkDust.sks in Resources */ = {isa = PBXBuildFile; fileRef = 76F62150254BB61800703779 /* PlayerWalkDust.sks */; };
+		76FE6C84257556960017B13D /* goose_gust.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 76FE6C83257556960017B13D /* goose_gust.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		765ECAE9256C1DD400E7AC78 /* Penguin_attack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Penguin_attack.atlas; path = ../../../../../Downloads/Penguin_attack.atlas; sourceTree = "<group>"; };
+		765ECAE9256C1DD400E7AC78 /* penguin_punch_folder.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = penguin_punch_folder.atlas; path = ../../../../../Downloads/penguin_punch_folder.atlas; sourceTree = "<group>"; };
 		765ECAEC256C1E1100E7AC78 /* Penguin_Move.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Penguin_Move.atlas; path = ../../../../../Downloads/Penguin_Move.atlas; sourceTree = "<group>"; };
 		765ECAEF256C1E3500E7AC78 /* Penguin_fly.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Penguin_fly.atlas; path = ../../../../../Downloads/Penguin_fly.atlas; sourceTree = "<group>"; };
 		765ECAF2256D6ECB00E7AC78 /* ChickenTheme1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = ChickenTheme1.mp3; path = ../../../../../Downloads/ChickenTheme1.mp3; sourceTree = "<group>"; };
@@ -44,6 +45,7 @@
 		76E35FA4254719FD00726ADA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		76E35FA6254719FD00726ADA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76F62150254BB61800703779 /* PlayerWalkDust.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlayerWalkDust.sks; sourceTree = "<group>"; };
+		76FE6C83257556960017B13D /* goose_gust.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = goose_gust.atlas; path = ../../../../../Downloads/goose_gust.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,9 +78,10 @@
 		76E35F96254719FA00726ADA /* Chicken Fighter Ultra */ = {
 			isa = PBXGroup;
 			children = (
+				76FE6C83257556960017B13D /* goose_gust.atlas */,
 				765ECAEF256C1E3500E7AC78 /* Penguin_fly.atlas */,
 				765ECAEC256C1E1100E7AC78 /* Penguin_Move.atlas */,
-				765ECAE9256C1DD400E7AC78 /* Penguin_attack.atlas */,
+				765ECAE9256C1DD400E7AC78 /* penguin_punch_folder.atlas */,
 				76968C6B2566CB3F00AAF305 /* gooseMove.atlas */,
 				76968C682566CB2000AAF305 /* goose_flying_good.atlas */,
 				76E35F97254719FA00726ADA /* AppDelegate.swift */,
@@ -156,9 +159,10 @@
 			files = (
 				76E35FA3254719FA00726ADA /* Main.storyboard in Resources */,
 				76968C692566CB2000AAF305 /* goose_flying_good.atlas in Resources */,
+				76FE6C84257556960017B13D /* goose_gust.atlas in Resources */,
 				76F62151254BB61800703779 /* PlayerWalkDust.sks in Resources */,
 				76E35F9A254719FA00726ADA /* GameScene.sks in Resources */,
-				765ECAEA256C1DD400E7AC78 /* Penguin_attack.atlas in Resources */,
+				765ECAEA256C1DD400E7AC78 /* penguin_punch_folder.atlas in Resources */,
 				76968C6C2566CB3F00AAF305 /* gooseMove.atlas in Resources */,
 				765ECAF0256C1E3600E7AC78 /* Penguin_fly.atlas in Resources */,
 				76E35FA5254719FD00726ADA /* Assets.xcassets in Resources */,

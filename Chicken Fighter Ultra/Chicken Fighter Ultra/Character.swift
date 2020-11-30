@@ -23,6 +23,9 @@ class Character:SKSpriteNode{
     var x_acc:CGFloat = 0
     var CharacterSize: CGSize = CGSize.zero
     
+    var sp = false
+    var prevDir = ""
+    
     var run_animation_sprite_name: String = ""
     var run_animation_folder_name: String = ""
     var fly_animation_sprite_name: String = ""
@@ -66,13 +69,15 @@ class Character:SKSpriteNode{
     func setTexture(folderName: String,sprite:SKSpriteNode,spriteName: String,speed:Double){
            let textureAtlas = SKTextureAtlas(named: folderName)
            var frames: [SKTexture] = []
+        
            for i in 0...textureAtlas.textureNames.count - 1{
                let name = "\(spriteName)\(i).png"
                let texture = SKTexture(imageNamed: name)
                texture.filteringMode = SKTextureFilteringMode.nearest
                frames.append(texture)
            }
-             
+        print(frames)
+        self.removeAllActions()
            let animation = SKAction.animate(with: frames, timePerFrame: 1/speed)
            sprite.run(SKAction.repeatForever(animation))
     }
@@ -90,18 +95,22 @@ class Character:SKSpriteNode{
      }
 
     public func update_character(){
-      
+        if x_direction == "left"{
+            self.xScale = -1
+        }else if prevDir == "left" && !(x_direction == "right"){
+            self.xScale = -1
+        }else{
+            self.xScale = 1
+        }
         
-        
-        if punch{
+        if sp{
             self.removeAllActions()
-            if x_direction == "left"{
-                self.xScale = -1
-            }else{
-                self.xScale = 1
-            }
             setTexture(folderName: attack_animation_folder_name, sprite: self, spriteName: attack_animation_sprite_name,speed: 100)
-            punch = false
+            print("huh")
+            punch = true
+            isWalk = false
+            isFly = false
+            sp = false
         }
         else if x_direction == "right" && !isFly{
             if (self.physicsBody?.velocity.dx)! < x_max_speed{
@@ -137,9 +146,16 @@ class Character:SKSpriteNode{
             }
             
         }else {
-            self.removeAllActions()
-            isWalk = false
-            isFly = false
+            if !punch && self.physicsBody?.velocity.dx == 0{
+                self.removeAllActions()
+                isWalk = false
+                isFly = false
+                if prevDir == "right"{
+                    self.xScale = 1
+                }else if prevDir == "left"{
+                    self.xScale = -1
+                }
+            }
         }
         
     }

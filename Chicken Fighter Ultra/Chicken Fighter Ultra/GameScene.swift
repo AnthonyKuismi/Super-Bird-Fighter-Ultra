@@ -50,7 +50,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             audioBackground = try AVAudioPlayer(contentsOf: url)
            
             } catch {}
-        audioBackground?.play()
+        //audioBackground?.play()
     }
     
     func setup(){
@@ -175,11 +175,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func setup_game_scene(){
         self.removeAllChildren()
         if cn == 1{
-            Player.setAnimations(run_sprite: "goose_walk", run_folder: "gooseMove", fly_sprite:"goose_flying" , fly_folder: "goose_flying_good", attack_sprite: "", attack_folder: "")
+            Player.setAnimations(run_sprite: "goose_walk", run_folder: "gooseMove", fly_sprite:"goose_flying" , fly_folder: "goose_flying_good", attack_sprite: "goose_gust", attack_folder: "goose_gust")
             Player.setvalues(jumps: 2, jump_vel: 200, max_x_speed: 200, acc: 200, size: CharacterSize)
             
         }else if cn == 2{
-            Player.setAnimations(run_sprite: "penguin_Walk", run_folder: "Penguin_Move", fly_sprite:"penguin_jump" , fly_folder: "Penguin_fly", attack_sprite: "penguin_attack", attack_folder: "Penguin_attack")
+            Player.setAnimations(run_sprite: "penguin_Walk", run_folder: "Penguin_Move", fly_sprite:"penguin_jump" , fly_folder: "Penguin_fly", attack_sprite: "penguin_attack", attack_folder: "penguin_punch_folder")
             Player.setvalues(jumps: 2, jump_vel: 200, max_x_speed: 200, acc: 200, size: CharacterSize)
             
         }else if cn == 3{
@@ -233,11 +233,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if Right_Arrow.contains(location){
             print("right end")
             Player.x_direction = ""
+            Player.prevDir = "right"
             Right_Arrow.alpha = 1
         }
         if Left_Arrow.contains(location){
             print("left end")
             Player.x_direction = ""
+            Player.prevDir = "left"
             Left_Arrow.alpha = 1
 
         }
@@ -248,13 +250,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         if Punch_button.contains(location){
             print("punch end")
+            Player.sp = false
+            Player.punch = false
             Punch_button.alpha = 1
         }
     }
     
     override func update(_ currentTime: TimeInterval) {
         if !audioBackground!.isPlaying{
-            audioBackground?.play()
+            //audioBackground?.play()
         }
         Player.update_character()
         if Player.x_direction != "" && Player.position.y < 0{
@@ -331,7 +335,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if self.Punch_button.contains(location){
                     self.Punch_button.alpha = 0.5
                     print("punch")
-                    Player.punch = true
+                    Player.sp = true
                 }
             }else if node.name == "charback1"{
                 if self.charback1.contains(location){
