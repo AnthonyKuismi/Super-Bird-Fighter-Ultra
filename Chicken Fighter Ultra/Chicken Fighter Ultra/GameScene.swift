@@ -45,8 +45,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     func setupSounds(){
         do{
-            var path = Bundle.main.path(forResource: "ChickenTheme1", ofType: "mp3")!
-            var url = URL(fileURLWithPath: path)
+            let path = Bundle.main.path(forResource: "chicken_theme", ofType: "mp3")!
+            let url = URL(fileURLWithPath: path)
             audioBackground = try AVAudioPlayer(contentsOf: url)
            
             } catch {}
@@ -95,7 +95,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         set_filtering_mode(fileNamed: "dummy", node: dummy)
         set_filtering_mode(fileNamed: "goose_stand", node: charbut1)
         set_filtering_mode(fileNamed: "penguin_walk0", node: charbut2)
-        set_filtering_mode(fileNamed: "Chickette", node: charbut3)
+        set_filtering_mode(fileNamed: "sprite_0", node: charbut3)
         set_filtering_mode(fileNamed: "Chickette", node: charbut4)
     }
     
@@ -183,7 +183,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             Player.setvalues(jumps: 2, jump_vel: 200, max_x_speed: 200, acc: 200, size: CharacterSize)
             
         }else if cn == 3{
-            Player.setAnimations(run_sprite: "goose_walk", run_folder: "gooseMove", fly_sprite:"goose_flying" , fly_folder: "goose_flying_good", attack_sprite: "", attack_folder: "")
+            Player.setAnimations(run_sprite: "sprite_", run_folder: "micha_walk", fly_sprite:"micha_jump" , fly_folder: "micha_jump", attack_sprite: "micha_attack", attack_folder: "micha_attack")
             Player.setvalues(jumps: 2, jump_vel: 200, max_x_speed: 200, acc: 200, size: CharacterSize)
             
         }else if cn == 4{
