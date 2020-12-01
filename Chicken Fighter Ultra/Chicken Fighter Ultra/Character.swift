@@ -95,12 +95,22 @@ class Character:SKSpriteNode{
      }
 
     public func update_character(){
+        if self.position.y > -90{
+            isFly = true
+            isWalk = false
+        }
         if x_direction == "left"{
             self.xScale = -1
         }else if prevDir == "left" && !(x_direction == "right"){
             self.xScale = -1
         }else{
             self.xScale = 1
+        }
+        
+        if x_direction == "right" && (self.physicsBody?.velocity.dx)! < x_max_speed{
+            self.physicsBody?.velocity.dx += x_acc
+        }else if x_direction == "left" && (self.physicsBody?.velocity.dx)! > -x_max_speed{
+            self.physicsBody?.velocity.dx -= x_acc
         }
         
         if sp{
@@ -112,26 +122,20 @@ class Character:SKSpriteNode{
             isFly = false
             sp = false
         }
-        else if x_direction == "right" && !isFly{
-            if (self.physicsBody?.velocity.dx)! < x_max_speed{
-                self.physicsBody?.velocity.dx += x_acc
+        else if x_direction == "right" && !isFly {
                 if (!isWalk){
                     self.removeAllActions()
                     setTexture(folderName: run_animation_folder_name, sprite: self, spriteName: run_animation_sprite_name,speed: 100)
                     self.xScale = 1
                     isWalk = true
                 }
-            }
         }else if x_direction == "left" && !isFly{
-            if (self.physicsBody?.velocity.dx)! > -x_max_speed{
-                self.physicsBody?.velocity.dx -= x_acc
                 if (!isWalk){
                     self.removeAllActions()
                     setTexture(folderName: run_animation_folder_name, sprite: self, spriteName: run_animation_sprite_name,speed: 100)
                     self.xScale = -1
                     isWalk = true
                 }
-            }
         }else if (self.physicsBody?.velocity.dy)! >= 5 && !isWalk{
             if x_direction == "left"{
                 self.xScale = -1
