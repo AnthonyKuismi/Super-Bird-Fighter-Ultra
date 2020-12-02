@@ -13,7 +13,7 @@ import AVFoundation
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var current_jumps = 0
-    var cn = 0
+    public var cn = 0
     var max_jumps = 2
     var charbut1 = SKSpriteNode()
     var charbut2 = SKSpriteNode()
@@ -37,20 +37,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let CharacterSize = CGSize(width: 96 , height: 96)
     var Play_Button = SKSpriteNode()
     var audioBackground: AVAudioPlayer?
+    var audioHurt: AVAudioPlayer?
+    var audioJump: AVAudioPlayer?
+    var audioPunch: AVAudioPlayer?
     
     override func didMove(to view: SKView) {
-        Player.setvalues(jumps: 2, jump_vel: 200, max_x_speed: 200, acc: 200, size: CharacterSize)
+        Player.setvalues(jumps: 2, jump_vel: 200, max_x_speed: 200, acc: 200, size: CharacterSize, anim_speed: 1)
         Player.setAnimations(run_sprite: "goose_walk", run_folder: "gooseMove", fly_sprite:"goose_flying" , fly_folder: "goose_flying_good", attack_sprite: "", attack_folder: "")
         setup()
     }
     func setupSounds(){
         do{
-            let path = Bundle.main.path(forResource: "chicken_theme", ofType: "mp3")!
-            let url = URL(fileURLWithPath: path)
+            var path = Bundle.main.path(forResource: "chicken_theme", ofType: "mp3")!
+            var url = URL(fileURLWithPath: path)
             audioBackground = try AVAudioPlayer(contentsOf: url)
-           
+            path = Bundle.main.path(forResource: "OW2", ofType: "mp3")!
+            url = URL(fileURLWithPath: path)
+            audioHurt = try AVAudioPlayer(contentsOf: url)
+            path = Bundle.main.path(forResource: "jump1", ofType: "mp3")!
+            url = URL(fileURLWithPath: path)
+            audioJump = try AVAudioPlayer(contentsOf: url)
+            path = Bundle.main.path(forResource: "punch1", ofType: "mp3")!
+            url = URL(fileURLWithPath: path)
+            audioPunch = try AVAudioPlayer(contentsOf: url)
             } catch {}
-        //audioBackground?.play()
+        audioBackground?.play()
     }
     
     func setup(){
@@ -139,7 +150,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         LeftWall.physicsBody?.categoryBitMask = 2
         RightWall.physicsBody?.categoryBitMask = 2
         
-        dummy.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 50, height: 50))
+        dummy.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "dummy"), size: CharacterSize)
+        dummy.physicsBody?.allowsRotation = false
     }
     
     func set_positions(){
@@ -176,19 +188,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.removeAllChildren()
         if cn == 1{
             Player.setAnimations(run_sprite: "goose_walk", run_folder: "gooseMove", fly_sprite:"goose_flying" , fly_folder: "goose_flying_good", attack_sprite: "goose_gust", attack_folder: "goose_gust")
-            Player.setvalues(jumps: 2, jump_vel: 200, max_x_speed: 200, acc: 200, size: CharacterSize)
+            Player.setvalues(jumps: 2, jump_vel: 200, max_x_speed: 200, acc: 200, size: CharacterSize,anim_speed: 1)
             
         }else if cn == 2{
             Player.setAnimations(run_sprite: "penguin_Walk", run_folder: "Penguin_Move", fly_sprite:"penguin_jump" , fly_folder: "Penguin_fly", attack_sprite: "penguin_attack", attack_folder: "penguin_punch_folder")
-            Player.setvalues(jumps: 2, jump_vel: 200, max_x_speed: 200, acc: 200, size: CharacterSize)
+            Player.setvalues(jumps: 2, jump_vel: 200, max_x_speed: 200, acc: 200, size: CharacterSize,anim_speed: 1)
             
         }else if cn == 3{
             Player.setAnimations(run_sprite: "sprite_", run_folder: "micha_walk", fly_sprite:"micha_jump" , fly_folder: "micha_jump", attack_sprite: "micha_attack", attack_folder: "micha_attack")
-            Player.setvalues(jumps: 2, jump_vel: 200, max_x_speed: 200, acc: 200, size: CharacterSize)
+            Player.setvalues(jumps: 2, jump_vel: 200, max_x_speed: 200, acc: 200, size: CharacterSize, anim_speed: 6)
             
         }else if cn == 4{
             Player.setAnimations(run_sprite: "goose_walk", run_folder: "gooseMove", fly_sprite:"goose_flying" , fly_folder: "goose_flying_good", attack_sprite: "", attack_folder: "")
-            Player.setvalues(jumps: 2, jump_vel: 200, max_x_speed: 200, acc: 200, size: CharacterSize)
+            Player.setvalues(jumps: 2, jump_vel: 200, max_x_speed: 200, acc: 200, size: CharacterSize, anim_speed: 1)
            
         }
         addChild(Platform)
@@ -256,9 +268,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func CGPointDistanceSquared(from: CGPoint, to: CGPoint) -> CGFloat {
+        return (from.x - to.x) * (from.x - to.x) + (from.y - to.y) * (from.y - to.y)
+    }
+
+    func CGPointDistance(from: CGPoint, to: CGPoint) -> CGFloat {
+        return sqrt(CGPointDistanceSquared(from: from, to: to))
+    }
+    
     override func update(_ currentTime: TimeInterval) {
+        if Player.punch && (CGPointDistance(from: Player.position, to: dummy.position) < 100){
+            if !audioHurt!.isPlaying{
+                audioHurt?.play()
+            }
+        }
         if !audioBackground!.isPlaying{
-            //audioBackground?.play()
+            audioBackground?.play()
         }
         Player.update_character()
         if Player.x_direction != "" && Player.position.y < 0{
@@ -329,6 +354,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         self.current_jumps += 1
                         self.Player.physicsBody?.applyImpulse(CGVector(dx: 0, dy: Player.jump_velocity))
                         Player.isWalk = false
+                        if !self.audioJump!.isPlaying{
+                            audioJump?.play()
+                        }
                     }
                 }
             }else if node.name == "PunchButton"{
@@ -336,6 +364,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     self.Punch_button.alpha = 0.5
                     print("punch")
                     Player.sp = true
+                    if !self.audioPunch!.isPlaying{
+                        audioPunch?.play()
+                    }
                 }
             }else if node.name == "charback1"{
                 if self.charback1.contains(location){

@@ -19,6 +19,10 @@
 		76B15E8F2576A41800A5F507 /* micha_walk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 76B15E8E2576A41800A5F507 /* micha_walk.atlas */; };
 		76B15E922576A45500A5F507 /* micha_jump.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 76B15E912576A45500A5F507 /* micha_jump.atlas */; };
 		76B15E952576A48300A5F507 /* micha_attack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 76B15E942576A48300A5F507 /* micha_attack.atlas */; };
+		76B468A02577F994002FDD9B /* OW.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 76B4689F2577F994002FDD9B /* OW.mp3 */; };
+		76B468A42577FEAF002FDD9B /* OW2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 76B468A32577FEAF002FDD9B /* OW2.mp3 */; };
+		76B468A72577FEE4002FDD9B /* jump1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 76B468A62577FEE4002FDD9B /* jump1.mp3 */; };
+		76B468AA2577FF74002FDD9B /* punch1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 76B468A92577FF74002FDD9B /* punch1.mp3 */; };
 		76E35F98254719FA00726ADA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E35F97254719FA00726ADA /* AppDelegate.swift */; };
 		76E35F9A254719FA00726ADA /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 76E35F99254719FA00726ADA /* GameScene.sks */; };
 		76E35F9C254719FA00726ADA /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 76E35F9B254719FA00726ADA /* Actions.sks */; };
@@ -43,6 +47,10 @@
 		76B15E8E2576A41800A5F507 /* micha_walk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = micha_walk.atlas; path = ../../../../../Downloads/micha_walk.atlas; sourceTree = "<group>"; };
 		76B15E912576A45500A5F507 /* micha_jump.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = micha_jump.atlas; path = ../../../../../Downloads/micha_jump.atlas; sourceTree = "<group>"; };
 		76B15E942576A48300A5F507 /* micha_attack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = micha_attack.atlas; path = ../../../../../Downloads/micha_attack.atlas; sourceTree = "<group>"; };
+		76B4689F2577F994002FDD9B /* OW.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = OW.mp3; path = ../../../../../Downloads/OW.mp3; sourceTree = "<group>"; };
+		76B468A32577FEAF002FDD9B /* OW2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = OW2.mp3; path = ../../../../../Downloads/OW2.mp3; sourceTree = "<group>"; };
+		76B468A62577FEE4002FDD9B /* jump1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = jump1.mp3; path = ../../../../../Downloads/jump1.mp3; sourceTree = "<group>"; };
+		76B468A92577FF74002FDD9B /* punch1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = punch1.mp3; path = ../../../../../Downloads/punch1.mp3; sourceTree = "<group>"; };
 		76E35F94254719FA00726ADA /* Chicken Fighter Ultra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chicken Fighter Ultra.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		76E35F97254719FA00726ADA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76E35F99254719FA00726ADA /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -101,7 +109,11 @@
 				76E35F9D254719FA00726ADA /* GameScene.swift */,
 				767E3A5025657C5D00840448 /* Character.swift */,
 				76F62150254BB61800703779 /* PlayerWalkDust.sks */,
+				76B4689F2577F994002FDD9B /* OW.mp3 */,
+				76B468A62577FEE4002FDD9B /* jump1.mp3 */,
+				76B468A32577FEAF002FDD9B /* OW2.mp3 */,
 				765ECAF2256D6ECB00E7AC78 /* ChickenTheme1.mp3 */,
+				76B468A92577FF74002FDD9B /* punch1.mp3 */,
 				76B15E8B2576A3A200A5F507 /* chicken_theme.mp3 */,
 				768A2F0A2549C3C700121FBD /* SpriteKitContainer.swift */,
 				76E35F9F254719FA00726ADA /* GameViewController.swift */,
@@ -172,11 +184,15 @@
 				76E35FA3254719FA00726ADA /* Main.storyboard in Resources */,
 				76B15E922576A45500A5F507 /* micha_jump.atlas in Resources */,
 				76968C692566CB2000AAF305 /* goose_flying_good.atlas in Resources */,
+				76B468AA2577FF74002FDD9B /* punch1.mp3 in Resources */,
 				76FE6C84257556960017B13D /* goose_gust.atlas in Resources */,
 				76F62151254BB61800703779 /* PlayerWalkDust.sks in Resources */,
+				76B468A02577F994002FDD9B /* OW.mp3 in Resources */,
 				76E35F9A254719FA00726ADA /* GameScene.sks in Resources */,
+				76B468A42577FEAF002FDD9B /* OW2.mp3 in Resources */,
 				765ECAEA256C1DD400E7AC78 /* penguin_punch_folder.atlas in Resources */,
 				76B15E8C2576A3A200A5F507 /* chicken_theme.mp3 in Resources */,
+				76B468A72577FEE4002FDD9B /* jump1.mp3 in Resources */,
 				76968C6C2566CB3F00AAF305 /* gooseMove.atlas in Resources */,
 				765ECAF0256C1E3600E7AC78 /* Penguin_fly.atlas in Resources */,
 				76E35FA5254719FD00726ADA /* Assets.xcassets in Resources */,

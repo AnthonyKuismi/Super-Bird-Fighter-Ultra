@@ -25,7 +25,7 @@ class Character:SKSpriteNode{
     
     var sp = false
     var prevDir = ""
-    
+    var animation_speed:CGFloat = 0
     var run_animation_sprite_name: String = ""
     var run_animation_folder_name: String = ""
     var fly_animation_sprite_name: String = ""
@@ -42,11 +42,12 @@ class Character:SKSpriteNode{
         fatalError("init(coder:) has not been implemented")
     }
     
-   public func setvalues(jumps:CGFloat, jump_vel:CGFloat, max_x_speed:CGFloat, acc:CGFloat, size:CGSize){
+    public func setvalues(jumps:CGFloat, jump_vel:CGFloat, max_x_speed:CGFloat, acc:CGFloat, size:CGSize, anim_speed:CGFloat){
         max_jumps = jumps
         jump_velocity = jump_vel
         x_max_speed = max_x_speed
         x_acc = acc
+        animation_speed = anim_speed
         CharacterSize = size
         self.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: run_animation_sprite_name + "0"), size: CharacterSize)
         self.physicsBody?.affectedByGravity = true
@@ -78,7 +79,7 @@ class Character:SKSpriteNode{
            }
         print(frames)
         self.removeAllActions()
-           let animation = SKAction.animate(with: frames, timePerFrame: 1/speed)
+        let animation = SKAction.animate(with: frames, timePerFrame: (1/speed)*Double(animation_speed))
            sprite.run(SKAction.repeatForever(animation))
     }
     
