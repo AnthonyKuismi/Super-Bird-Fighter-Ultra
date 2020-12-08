@@ -11,6 +11,8 @@
 		765ECAED256C1E1100E7AC78 /* Penguin_Move.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 765ECAEC256C1E1100E7AC78 /* Penguin_Move.atlas */; };
 		765ECAF0256C1E3600E7AC78 /* Penguin_fly.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 765ECAEF256C1E3500E7AC78 /* Penguin_fly.atlas */; };
 		765ECAF3256D6ECB00E7AC78 /* ChickenTheme1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 765ECAF2256D6ECB00E7AC78 /* ChickenTheme1.mp3 */; };
+		7670BD6D257E9122007BDCAC /* elunmaskjump.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7670BD6C257E9121007BDCAC /* elunmaskjump.atlas */; };
+		7670BD70257E912E007BDCAC /* elunmaskwalk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7670BD6F257E912E007BDCAC /* elunmaskwalk.atlas */; };
 		767E3A5125657C5D00840448 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767E3A5025657C5D00840448 /* Character.swift */; };
 		768A2F0B2549C3C700121FBD /* SpriteKitContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768A2F0A2549C3C700121FBD /* SpriteKitContainer.swift */; };
 		76968C692566CB2000AAF305 /* goose_flying_good.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 76968C682566CB2000AAF305 /* goose_flying_good.atlas */; };
@@ -39,6 +41,8 @@
 		765ECAEC256C1E1100E7AC78 /* Penguin_Move.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Penguin_Move.atlas; path = ../../../../../Downloads/Penguin_Move.atlas; sourceTree = "<group>"; };
 		765ECAEF256C1E3500E7AC78 /* Penguin_fly.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Penguin_fly.atlas; path = ../../../../../Downloads/Penguin_fly.atlas; sourceTree = "<group>"; };
 		765ECAF2256D6ECB00E7AC78 /* ChickenTheme1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = ChickenTheme1.mp3; path = ../../../../../Downloads/ChickenTheme1.mp3; sourceTree = "<group>"; };
+		7670BD6C257E9121007BDCAC /* elunmaskjump.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = elunmaskjump.atlas; path = ../../../../../Downloads/elunmaskjump.atlas; sourceTree = "<group>"; };
+		7670BD6F257E912E007BDCAC /* elunmaskwalk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = elunmaskwalk.atlas; path = ../../../../../Downloads/elunmaskwalk.atlas; sourceTree = "<group>"; };
 		767E3A5025657C5D00840448 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		768A2F0A2549C3C700121FBD /* SpriteKitContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteKitContainer.swift; sourceTree = "<group>"; };
 		76968C682566CB2000AAF305 /* goose_flying_good.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = goose_flying_good.atlas; path = ../../../../../Desktop/goose_flying_good.atlas; sourceTree = "<group>"; };
@@ -94,6 +98,8 @@
 		76E35F96254719FA00726ADA /* Chicken Fighter Ultra */ = {
 			isa = PBXGroup;
 			children = (
+				7670BD6F257E912E007BDCAC /* elunmaskwalk.atlas */,
+				7670BD6C257E9121007BDCAC /* elunmaskjump.atlas */,
 				76B15E942576A48300A5F507 /* micha_attack.atlas */,
 				76B15E912576A45500A5F507 /* micha_jump.atlas */,
 				76B15E8E2576A41800A5F507 /* micha_walk.atlas */,
@@ -186,6 +192,7 @@
 				76968C692566CB2000AAF305 /* goose_flying_good.atlas in Resources */,
 				76B468AA2577FF74002FDD9B /* punch1.mp3 in Resources */,
 				76FE6C84257556960017B13D /* goose_gust.atlas in Resources */,
+				7670BD6D257E9122007BDCAC /* elunmaskjump.atlas in Resources */,
 				76F62151254BB61800703779 /* PlayerWalkDust.sks in Resources */,
 				76B468A02577F994002FDD9B /* OW.mp3 in Resources */,
 				76E35F9A254719FA00726ADA /* GameScene.sks in Resources */,
@@ -196,6 +203,7 @@
 				76968C6C2566CB3F00AAF305 /* gooseMove.atlas in Resources */,
 				765ECAF0256C1E3600E7AC78 /* Penguin_fly.atlas in Resources */,
 				76E35FA5254719FD00726ADA /* Assets.xcassets in Resources */,
+				7670BD70257E912E007BDCAC /* elunmaskwalk.atlas in Resources */,
 				765ECAED256C1E1100E7AC78 /* Penguin_Move.atlas in Resources */,
 				76E35F9C254719FA00726ADA /* Actions.sks in Resources */,
 				76B15E8F2576A41800A5F507 /* micha_walk.atlas in Resources */,
@@ -355,7 +363,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 883DK65VTV;
 				INFOPLIST_FILE = "Chicken Fighter Ultra/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -375,7 +383,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 883DK65VTV;
 				INFOPLIST_FILE = "Chicken Fighter Ultra/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (

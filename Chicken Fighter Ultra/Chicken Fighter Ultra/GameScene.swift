@@ -15,6 +15,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var current_jumps = 0
     public var cn = 0
     var max_jumps = 2
+    var shootspeed = 60
+    var shootframe = 0
     var charbut1 = SKSpriteNode()
     var charbut2 = SKSpriteNode()
     var charbut3 = SKSpriteNode()
@@ -37,9 +39,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let CharacterSize = CGSize(width: 96 , height: 96)
     var Play_Button = SKSpriteNode()
     var audioBackground: AVAudioPlayer?
+    var dd = false
+    var da:CGFloat = 100
+    var dmax:CGFloat = 100
     var audioHurt: AVAudioPlayer?
     var audioJump: AVAudioPlayer?
     var audioPunch: AVAudioPlayer?
+    var egg = SKSpriteNode()
     
     override func didMove(to view: SKView) {
         Player.setvalues(jumps: 2, jump_vel: 200, max_x_speed: 200, acc: 200, size: CharacterSize, anim_speed: 1)
@@ -94,6 +100,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         charback2.name = "charback2"
         charback3.name = "charback3"
         charback4.name = "charback4"
+        dummy.name = "dummy"
+        egg.name = "egg"
     }
     
     func set_textures(){
@@ -107,7 +115,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         set_filtering_mode(fileNamed: "goose_stand", node: charbut1)
         set_filtering_mode(fileNamed: "penguin_walk0", node: charbut2)
         set_filtering_mode(fileNamed: "sprite_0", node: charbut3)
-        set_filtering_mode(fileNamed: "Chickette", node: charbut4)
+        set_filtering_mode(fileNamed: "elunwalk0", node: charbut4)
+        set_filtering_mode(fileNamed: "chickenboss2", node: egg)
     }
     
     func set_sizes(){
@@ -123,6 +132,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         charbut4.size = CGSize(width: 80, height: 80)
         dummy.size = CharacterSize
         backround.size = CGSize(width: 1000, height: 800)
+        egg.size = CGSize(width: 100, height: 100)
     }
     
     func set_physics(){
@@ -152,6 +162,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         dummy.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "dummy"), size: CharacterSize)
         dummy.physicsBody?.allowsRotation = false
+        
+        egg.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "chickenboss2"), size: CGSize(width: 100, height: 100))
+        egg.physicsBody?.categoryBitMask = 3
+        egg.physicsBody?.collisionBitMask = 2
     }
     
     func set_positions(){
@@ -186,6 +200,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func setup_game_scene(){
         self.removeAllChildren()
+        //true is left
+        dd = Bool.random()
         if cn == 1{
             Player.setAnimations(run_sprite: "goose_walk", run_folder: "gooseMove", fly_sprite:"goose_flying" , fly_folder: "goose_flying_good", attack_sprite: "goose_gust", attack_folder: "goose_gust")
             Player.setvalues(jumps: 2, jump_vel: 200, max_x_speed: 200, acc: 200, size: CharacterSize,anim_speed: 1)
@@ -199,7 +215,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             Player.setvalues(jumps: 2, jump_vel: 200, max_x_speed: 200, acc: 200, size: CharacterSize, anim_speed: 6)
             
         }else if cn == 4{
-            Player.setAnimations(run_sprite: "goose_walk", run_folder: "gooseMove", fly_sprite:"goose_flying" , fly_folder: "goose_flying_good", attack_sprite: "", attack_folder: "")
+            Player.setAnimations(run_sprite: "elunwalk", run_folder: "elunmaskwalk", fly_sprite:"elunjump" , fly_folder: "elunmaskjump", attack_sprite: "", attack_folder: "")
             Player.setvalues(jumps: 2, jump_vel: 200, max_x_speed: 200, acc: 200, size: CharacterSize, anim_speed: 1)
            
         }
@@ -277,6 +293,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func update(_ currentTime: TimeInterval) {
+        if shootframe < shootspeed{
+            shootframe += 1
+        }else if shootframe >= shootspeed{
+            shootframe = 0
+            contentsdotjson()
+        }
+        if dummy.position.x > 300{
+            dd = true
+        } else if dummy.position.x < -300{
+            dd = false
+        }
+        if dd == false && (dummy.physicsBody?.velocity.dx)! < dmax{
+            dummy.physicsBody?.velocity.dx += da
+        }else if dd == true && (dummy.physicsBody?.velocity.dx)! > -dmax{
+            dummy.physicsBody?.velocity.dx -= da
+        }
+        
         if Player.punch && (CGPointDistance(from: Player.position, to: dummy.position) < 100){
             if !audioHurt!.isPlaying{
                 audioHurt?.play()
@@ -414,5 +447,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             current_jumps = 0
             Player.isFly = false
         }
+        
+    }
+    
+    func contentsdotjson(){
+        let dx = Player.position.x - dummy.position.x
+        let dy = Player.position.y - dummy.position.y
+        egg.position.x = dummy.position.x
+        egg.position.y = dummy.position.y
+        egg.zPosition = 4
+        addChild(egg)
+        egg.physicsBody?.applyImpulse(CGVector(dx: dx/10, dy: dy/10))
+        egg.run(SKAction.sequence([
+            SKAction.wait(forDuration: 0.8),SKAction.removeFromParent()]))
     }
 }
