@@ -53,7 +53,7 @@ class Character:SKSpriteNode{
         self.physicsBody?.affectedByGravity = true
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.categoryBitMask = 1
-        self.physicsBody?.collisionBitMask = 2
+        //self.physicsBody?.collisionBitMask = 4
         self.physicsBody?.contactTestBitMask = 2
     self.physicsBody?.mass = 0.4
     }

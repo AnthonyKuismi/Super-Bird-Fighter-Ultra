@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		762A0D90258131A2009ECAB2 /* ChickenBossWalk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 762A0D8F258131A2009ECAB2 /* ChickenBossWalk.atlas */; };
+		762A0D9325817255009ECAB2 /* shieldsound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 762A0D9225817255009ECAB2 /* shieldsound.mp3 */; };
+		762A0D982581785F009ECAB2 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 762A0D972581785F009ECAB2 /* GameScene.sks */; };
+		762A0D9F25827EE2009ECAB2 /* elunattack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 762A0D9E25827EE2009ECAB2 /* elunattack.atlas */; };
 		765ECAEA256C1DD400E7AC78 /* penguin_punch_folder.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 765ECAE9256C1DD400E7AC78 /* penguin_punch_folder.atlas */; };
 		765ECAED256C1E1100E7AC78 /* Penguin_Move.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 765ECAEC256C1E1100E7AC78 /* Penguin_Move.atlas */; };
 		765ECAF0256C1E3600E7AC78 /* Penguin_fly.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 765ECAEF256C1E3500E7AC78 /* Penguin_fly.atlas */; };
@@ -26,7 +30,6 @@
 		76B468A72577FEE4002FDD9B /* jump1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 76B468A62577FEE4002FDD9B /* jump1.mp3 */; };
 		76B468AA2577FF74002FDD9B /* punch1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 76B468A92577FF74002FDD9B /* punch1.mp3 */; };
 		76E35F98254719FA00726ADA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E35F97254719FA00726ADA /* AppDelegate.swift */; };
-		76E35F9A254719FA00726ADA /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 76E35F99254719FA00726ADA /* GameScene.sks */; };
 		76E35F9C254719FA00726ADA /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 76E35F9B254719FA00726ADA /* Actions.sks */; };
 		76E35F9E254719FA00726ADA /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E35F9D254719FA00726ADA /* GameScene.swift */; };
 		76E35FA0254719FA00726ADA /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E35F9F254719FA00726ADA /* GameViewController.swift */; };
@@ -37,6 +40,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		762A0D8F258131A2009ECAB2 /* ChickenBossWalk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = ChickenBossWalk.atlas; path = ../../../../../Downloads/ChickenBossWalk.atlas; sourceTree = "<group>"; };
+		762A0D9225817255009ECAB2 /* shieldsound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = shieldsound.mp3; path = ../../../../../Downloads/shieldsound.mp3; sourceTree = "<group>"; };
+		762A0D972581785F009ECAB2 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = GameScene.sks; path = ../../../../../.Trash/GameScene.sks; sourceTree = "<group>"; };
+		762A0D9E25827EE2009ECAB2 /* elunattack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = elunattack.atlas; path = ../../../../../Downloads/elunattack.atlas; sourceTree = "<group>"; };
 		765ECAE9256C1DD400E7AC78 /* penguin_punch_folder.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = penguin_punch_folder.atlas; path = ../../../../../Downloads/penguin_punch_folder.atlas; sourceTree = "<group>"; };
 		765ECAEC256C1E1100E7AC78 /* Penguin_Move.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Penguin_Move.atlas; path = ../../../../../Downloads/Penguin_Move.atlas; sourceTree = "<group>"; };
 		765ECAEF256C1E3500E7AC78 /* Penguin_fly.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = Penguin_fly.atlas; path = ../../../../../Downloads/Penguin_fly.atlas; sourceTree = "<group>"; };
@@ -57,7 +64,6 @@
 		76B468A92577FF74002FDD9B /* punch1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = punch1.mp3; path = ../../../../../Downloads/punch1.mp3; sourceTree = "<group>"; };
 		76E35F94254719FA00726ADA /* Chicken Fighter Ultra.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chicken Fighter Ultra.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		76E35F97254719FA00726ADA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		76E35F99254719FA00726ADA /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		76E35F9B254719FA00726ADA /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		76E35F9D254719FA00726ADA /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		76E35F9F254719FA00726ADA /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +104,8 @@
 		76E35F96254719FA00726ADA /* Chicken Fighter Ultra */ = {
 			isa = PBXGroup;
 			children = (
+				762A0D9E25827EE2009ECAB2 /* elunattack.atlas */,
+				762A0D8F258131A2009ECAB2 /* ChickenBossWalk.atlas */,
 				7670BD6F257E912E007BDCAC /* elunmaskwalk.atlas */,
 				7670BD6C257E9121007BDCAC /* elunmaskjump.atlas */,
 				76B15E942576A48300A5F507 /* micha_attack.atlas */,
@@ -110,13 +118,14 @@
 				76968C6B2566CB3F00AAF305 /* gooseMove.atlas */,
 				76968C682566CB2000AAF305 /* goose_flying_good.atlas */,
 				76E35F97254719FA00726ADA /* AppDelegate.swift */,
-				76E35F99254719FA00726ADA /* GameScene.sks */,
+				762A0D972581785F009ECAB2 /* GameScene.sks */,
 				76E35F9B254719FA00726ADA /* Actions.sks */,
 				76E35F9D254719FA00726ADA /* GameScene.swift */,
 				767E3A5025657C5D00840448 /* Character.swift */,
 				76F62150254BB61800703779 /* PlayerWalkDust.sks */,
 				76B4689F2577F994002FDD9B /* OW.mp3 */,
 				76B468A62577FEE4002FDD9B /* jump1.mp3 */,
+				762A0D9225817255009ECAB2 /* shieldsound.mp3 */,
 				76B468A32577FEAF002FDD9B /* OW2.mp3 */,
 				765ECAF2256D6ECB00E7AC78 /* ChickenTheme1.mp3 */,
 				76B468A92577FF74002FDD9B /* punch1.mp3 */,
@@ -189,22 +198,25 @@
 			files = (
 				76E35FA3254719FA00726ADA /* Main.storyboard in Resources */,
 				76B15E922576A45500A5F507 /* micha_jump.atlas in Resources */,
+				762A0D9F25827EE2009ECAB2 /* elunattack.atlas in Resources */,
 				76968C692566CB2000AAF305 /* goose_flying_good.atlas in Resources */,
 				76B468AA2577FF74002FDD9B /* punch1.mp3 in Resources */,
+				762A0D982581785F009ECAB2 /* GameScene.sks in Resources */,
 				76FE6C84257556960017B13D /* goose_gust.atlas in Resources */,
 				7670BD6D257E9122007BDCAC /* elunmaskjump.atlas in Resources */,
 				76F62151254BB61800703779 /* PlayerWalkDust.sks in Resources */,
 				76B468A02577F994002FDD9B /* OW.mp3 in Resources */,
-				76E35F9A254719FA00726ADA /* GameScene.sks in Resources */,
 				76B468A42577FEAF002FDD9B /* OW2.mp3 in Resources */,
 				765ECAEA256C1DD400E7AC78 /* penguin_punch_folder.atlas in Resources */,
 				76B15E8C2576A3A200A5F507 /* chicken_theme.mp3 in Resources */,
 				76B468A72577FEE4002FDD9B /* jump1.mp3 in Resources */,
 				76968C6C2566CB3F00AAF305 /* gooseMove.atlas in Resources */,
 				765ECAF0256C1E3600E7AC78 /* Penguin_fly.atlas in Resources */,
+				762A0D90258131A2009ECAB2 /* ChickenBossWalk.atlas in Resources */,
 				76E35FA5254719FD00726ADA /* Assets.xcassets in Resources */,
 				7670BD70257E912E007BDCAC /* elunmaskwalk.atlas in Resources */,
 				765ECAED256C1E1100E7AC78 /* Penguin_Move.atlas in Resources */,
+				762A0D9325817255009ECAB2 /* shieldsound.mp3 in Resources */,
 				76E35F9C254719FA00726ADA /* Actions.sks in Resources */,
 				76B15E8F2576A41800A5F507 /* micha_walk.atlas in Resources */,
 				76B15E952576A48300A5F507 /* micha_attack.atlas in Resources */,
