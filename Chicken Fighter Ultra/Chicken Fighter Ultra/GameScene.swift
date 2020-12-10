@@ -16,7 +16,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     public var cn = 0
     var max_jumps = 2
     var ingame = false
-    var shootspeed = 300
+    var shootspeed = 100
     var shootframe = 0
     var charbut1 = SKSpriteNode()
     var charbut2 = SKSpriteNode()
@@ -257,6 +257,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(backround)
     }
     
+    func setup_game_over(){
+        self.removeAllChildren()
+        addChild(Play_Button)
+        addChild(backround)
+        set_filtering_mode(fileNamed: "gameover", node: backround)
+        set_positions()
+    }
    
     func set_filtering_mode(fileNamed: String,node: SKSpriteNode){
         let texture = SKTexture(imageNamed: fileNamed)
@@ -305,9 +312,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        if shootframe < shootspeed && ingame{
+        if heart.alpha <= 0.2{
+            setup_game_over()
+        }
+        if shootframe < shootspeed && ingame && heart.alpha > 0{
             shootframe += 1
-        }else if shootframe >= shootspeed && ingame{
+        }else if shootframe >= shootspeed && ingame && heart.alpha > 0{
             shootframe = 0
             contentsdotjson()
         }
@@ -391,9 +401,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     
                 }
             }else if node.name == "PlayButton"{
-                if (self.Play_Button.contains(location) && self.cn != 0){
+                if (self.Play_Button.contains(location) && self.cn != 0 && !ingame){
                     print("start")
                     self.setup_game_scene()
+                }else if (self.Play_Button.contains(location) && self.cn != 0 && ingame){
+                    print("restart")
+                    self.setup_main_menu()
+                    heart.alpha = 1
+                    ingame = false
                 }
             }else if node.name == "JumpButton"{
                 if(self.jump_button.contains(location)){
@@ -415,6 +430,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     Player.sp = true
                     if !self.audioPunch!.isPlaying{
                         audioPunch?.play()
+                        
                     }
                 }
             }else if node.name == "charback1"{
