@@ -46,7 +46,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var audioHurt: AVAudioPlayer?
     var audioJump: AVAudioPlayer?
     var audioPunch: AVAudioPlayer?
+    var audioWoah: AVAudioPlayer?
     var heart = SKSpriteNode()
+    var label = SKLabelNode(fontNamed: "AvenirNext-Bold")
+    var score = 0
+    var crate = SKSpriteNode()
+    var Mute = false
+    var MuteBttn = SKSpriteNode()
     
     override func didMove(to view: SKView) {
         Player.setvalues(jumps: 2, jump_vel: 200, max_x_speed: 200, acc: 200, size: CharacterSize, anim_speed: 1)
@@ -67,6 +73,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             path = Bundle.main.path(forResource: "punch1", ofType: "mp3")!
             url = URL(fileURLWithPath: path)
             audioPunch = try AVAudioPlayer(contentsOf: url)
+            path = Bundle.main.path(forResource: "realwoah", ofType: "mp3")!
+            url = URL(fileURLWithPath: path)
+            audioWoah = try AVAudioPlayer(contentsOf: url)
             } catch {}
         audioBackground?.play()
     }
@@ -102,6 +111,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         charback3.name = "charback3"
         charback4.name = "charback4"
         dummy.name = "dummy"
+        MuteBttn.name = "mute"
     }
     
     func set_textures(){
@@ -109,7 +119,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         set_filtering_mode(fileNamed: "LeftArrow", node: Left_Arrow)
         set_filtering_mode(fileNamed: "StartButton", node: Play_Button)
         set_filtering_mode(fileNamed: "JumpButton", node: jump_button)
-        set_filtering_mode(fileNamed: "clounds", node: backround)
+        set_filtering_mode(fileNamed: "clown", node: backround)
         set_filtering_mode(fileNamed: "Punch Button", node: Punch_button)
         //set_filtering_mode(fileNamed: "dummy", node: dummy)
         setTexture(folderName: "ChickenBossWalk", sprite: dummy, spriteName: "chickenBoss", speed: 100)
@@ -117,8 +127,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         set_filtering_mode(fileNamed: "penguin_walk0", node: charbut2)
         set_filtering_mode(fileNamed: "sprite_0", node: charbut3)
         set_filtering_mode(fileNamed: "elunwalk0", node: charbut4)
-        
+        set_filtering_mode(fileNamed: "crate", node: crate)
         set_filtering_mode(fileNamed: "heart", node: heart)
+        set_filtering_mode(fileNamed: "Mute", node: MuteBttn)
     }
     
     func set_sizes(){
@@ -134,8 +145,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         charbut4.size = CGSize(width: 80, height: 80)
         dummy.size = CharacterSize
         backround.size = CGSize(width: 1000, height: 800)
-        
+        label.fontSize = 30
+        label.fontColor = UIColor.black
+        label.zPosition = 100
         heart.size = CharacterSize
+        crate.size = buttonSize
+        MuteBttn.size = buttonSize
     }
     
     func set_physics(){
@@ -168,6 +183,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         dummy.physicsBody?.categoryBitMask = 8
         dummy.physicsBody?.collisionBitMask = 2
         
+        crate.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "chickenboss0"), size: CharacterSize)
+        
        
     }
     
@@ -191,6 +208,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         charback3.zPosition = -1
         charback4.position = CGPoint(x: 200, y: -100)
         charback4.zPosition = -1
+        
         Platform.position = CGPoint(x: 0, y: -200)
         LeftWall.position = CGPoint(x: -450, y: 0)
         Left_Arrow.position = CGPoint(x: -300, y: -200)
@@ -203,10 +221,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         backround.zPosition = -2
         Player.position.x = -300
         dummy.position.x = 300
+        label.position = CGPoint(x: 300, y: 200)
+        crate.position = CGPoint.zero
+        MuteBttn.position  = CGPoint(x: 0, y: -100)
     }
     
     func setup_game_scene(){
         ingame = true
+        score = 0
+        label.text = "Score: \(score)"
         self.removeAllChildren()
         //true is left
         dd = Bool.random()
@@ -239,6 +262,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(Punch_button)
         addChild(dummy)
         addChild(heart)
+        
+        addChild(label)
     }
     
     
@@ -253,7 +278,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(charback2)
         addChild(charback3)
         addChild(charback4)
-        set_filtering_mode(fileNamed: "clounds", node: backround)
+        addChild(MuteBttn)
+        set_filtering_mode(fileNamed: "clown", node: backround)
         addChild(backround)
     }
     
@@ -261,6 +287,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.removeAllChildren()
         addChild(Play_Button)
         addChild(backround)
+        addChild(label)
         set_filtering_mode(fileNamed: "gameover", node: backround)
         set_positions()
     }
@@ -278,25 +305,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         let location = touches.first!.location(in: self)
         if Right_Arrow.contains(location){
-            print("right end")
+            
             Player.x_direction = ""
             Player.prevDir = "right"
             Right_Arrow.alpha = 1
         }
         if Left_Arrow.contains(location){
-            print("left end")
+            
             Player.x_direction = ""
             Player.prevDir = "left"
             Left_Arrow.alpha = 1
 
         }
         if jump_button.contains(location){
-            print("jump end")
+           
             jump_button.alpha = 1
 
         }
         if Punch_button.contains(location){
-            print("punch end")
+            
             Player.sp = false
             Player.punch = false
             Punch_button.alpha = 1
@@ -312,6 +339,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func update(_ currentTime: TimeInterval) {
+        if Mute{
+            audioBackground?.volume = 0
+            audioHurt?.volume = 0
+            audioWoah?.volume = 0
+            audioJump?.volume = 0
+            audioPunch?.volume = 0
+        }else {
+            audioBackground?.volume = 1
+            audioHurt?.volume = 1
+            audioWoah?.volume = 1
+            audioJump?.volume = 1
+            audioPunch?.volume = 1
+        }
+       
+        
+      
         if heart.alpha <= 0.2{
             setup_game_over()
         }
@@ -339,13 +382,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if Player.punch && (CGPointDistance(from: Player.position, to: dummy.position) < 100){
             if !audioHurt!.isPlaying{
                 audioHurt?.play()
+                score += 1
+                label.text = "Score: \(score)"
             }
         }
         if !audioBackground!.isPlaying{
             audioBackground?.play()
         }
         Player.update_character()
-        if Player.x_direction != "" && Player.position.y < 0{
+        if Player.x_direction != "" && Player.position.y < 0 && heart.alpha >= 0.2{
             addEmiter(loc: CGPoint(x: Player.position.x, y: Player.position.y-Player.size.height/2), file: "PlayerWalkDust")
         }
         switch cn {
@@ -387,7 +432,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if node.name == "Right"{
                 if (self.Right_Arrow.contains(location)){
                     self.Right_Arrow.alpha = 0.5
-                    print("right begin")
+                    
                     Player.x_direction = "right"
                     Player.isFly = false
                     
@@ -395,17 +440,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }else  if node.name == "Left"{
                 if (self.Left_Arrow.contains(location)){
                     self.Left_Arrow.alpha = 0.5
-                    print("left begin")
                     Player.x_direction = "left"
                     Player.isFly = false
                     
                 }
             }else if node.name == "PlayButton"{
                 if (self.Play_Button.contains(location) && self.cn != 0 && !ingame){
-                    print("start")
+             
                     self.setup_game_scene()
                 }else if (self.Play_Button.contains(location) && self.cn != 0 && ingame){
-                    print("restart")
+            
                     self.setup_main_menu()
                     heart.alpha = 1
                     ingame = false
@@ -413,7 +457,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }else if node.name == "JumpButton"{
                 if(self.jump_button.contains(location)){
                     self.jump_button.alpha = 0.5
-                    print("jump")
+                 
                     if self.current_jumps < self.max_jumps{
                         self.current_jumps += 1
                         self.Player.physicsBody?.applyImpulse(CGVector(dx: 0, dy: Player.jump_velocity))
@@ -426,7 +470,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }else if node.name == "PunchButton"{
                 if self.Punch_button.contains(location){
                     self.Punch_button.alpha = 0.5
-                    print("punch")
+                
                     Player.sp = true
                     if !self.audioPunch!.isPlaying{
                         audioPunch?.play()
@@ -436,22 +480,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }else if node.name == "charback1"{
                 if self.charback1.contains(location){
                     self.cn = 1
-                    print("cn1")
+                  
                 }
             }else if node.name == "charback2"{
                 if self.charback2.contains(location){
                     self.cn = 2
-                    print("cn2")
+                  
                 }
             }else if node.name == "charback3"{
                 if self.charback3.contains(location){
                     self.cn = 3
-                    print("cn3")
+                   
                 }
             }else if node.name == "charback4"{
                 if self.charback4.contains(location){
                     self.cn = 4
-                    print("cn4")
+                    
+                }
+            }else if node.name == "mute"{
+                if self.MuteBttn.contains(location){
+                    Mute = !Mute
+                    if Mute{
+                        MuteBttn.alpha = 0.5
+                    }else{
+                        MuteBttn.alpha = 1
+                    }
                 }
             }
         }
@@ -481,20 +534,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         } else if nodeA?.name == "Player" && nodeB?.name == "egg"{
             heart.alpha -= 0.2
             nodeB!.removeFromParent()
+            audioWoah?.play()
         } else if nodeB?.name == "Player" && nodeA?.name == "egg"{
             heart.alpha -= 0.2
             nodeB!.removeFromParent()
+            audioWoah?.play()
         }
         
     }
     
     func contentsdotjson(){
         let egg = SKSpriteNode()
+        
         set_filtering_mode(fileNamed: "egg", node: egg)
         let dx = Player.position.x - dummy.position.x
         let dy = Player.position.y - dummy.position.y
         egg.position.x = dummy.position.x
-        egg.position.y = dummy.position.y + 10
+        egg.position.y = dummy.position.y
         egg.zPosition = 4
         egg.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "egg"), size: CGSize(width: 100, height: 100))
         egg.physicsBody?.categoryBitMask = 8
@@ -502,11 +558,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         egg.name = "egg"
         egg.physicsBody?.collisionBitMask = 2
         egg.physicsBody?.contactTestBitMask = 1
+        egg.physicsBody?.mass = 0.05
         addChild(egg)
         egg.physicsBody?.applyImpulse(CGVector(dx: dx/10, dy: dy/10))
         egg.run(SKAction.sequence([
             SKAction.wait(forDuration: 1),SKAction.removeFromParent()]))
     }
+    
+    
     
     func setTexture(folderName: String,sprite:SKSpriteNode,spriteName: String,speed:Double){
            let textureAtlas = SKTextureAtlas(named: folderName)
@@ -518,7 +577,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                texture.filteringMode = SKTextureFilteringMode.nearest
                frames.append(texture)
            }
-        print(frames)
+        
         self.removeAllActions()
         let animation = SKAction.animate(with: frames, timePerFrame: (1/speed))
            sprite.run(SKAction.repeatForever(animation))
