@@ -144,7 +144,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         charbut3.size = CGSize(width: 80, height: 80)
         charbut4.size = CGSize(width: 80, height: 80)
         dummy.size = CharacterSize
-        backround.size = CGSize(width: 1000, height: 800)
+        backround.size = CGSize(width: 800, height: 600)
         label.fontSize = 30
         label.fontColor = UIColor.black
         label.zPosition = 100
@@ -250,7 +250,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             Player.setvalues(jumps: 2, jump_vel: 200, max_x_speed: 200, acc: 200, size: CharacterSize, anim_speed: 1)
            
         }
-        set_filtering_mode(fileNamed: "farmyard", node: backround)
+        set_filtering_mode(fileNamed: "coolBarn", node: backround)
         addChild(Platform)
         addChild(Player)
         addChild(Left_Arrow)
