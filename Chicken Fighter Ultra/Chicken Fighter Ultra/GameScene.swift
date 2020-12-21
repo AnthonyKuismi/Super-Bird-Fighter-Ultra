@@ -150,10 +150,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         dummy.size = CharacterSize
         backround.size = CGSize(width: 800, height: 541)
         label.fontSize = 30
-        label.fontColor = UIColor.black
+        label.fontColor = UIColor.green
+        
         label.zPosition = 100
         healthlabel.fontSize = 30
-        healthlabel.fontColor = UIColor.black
+        healthlabel.fontColor = UIColor.green
         heart.size = CharacterSize
         heartback.size = CharacterSize
         crate.size = buttonSize
@@ -247,21 +248,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if cn == 1{
             Player.setAnimations(run_sprite: "goose_walk", run_folder: "gooseMove", fly_sprite:"goose_flying" , fly_folder: "goose_flying_good", attack_sprite: "goose_gust", attack_folder: "goose_gust")
             Player.setvalues(jumps: 2, jump_vel: 200, max_x_speed: 200, acc: 200, size: CharacterSize,anim_speed: 1)
-            
+            set_filtering_mode(fileNamed: "barnSwag", node: backround)
         }else if cn == 2{
             Player.setAnimations(run_sprite: "penguin_Walk", run_folder: "Penguin_Move", fly_sprite:"penguin_jump" , fly_folder: "Penguin_fly", attack_sprite: "penguin_attack", attack_folder: "penguin_punch_folder")
             Player.setvalues(jumps: 2, jump_vel: 200, max_x_speed: 200, acc: 200, size: CharacterSize,anim_speed: 1)
+            set_filtering_mode(fileNamed: "alaska", node: backround)
             
         }else if cn == 3{
             Player.setAnimations(run_sprite: "sprite_", run_folder: "micha_walk", fly_sprite:"micha_jump" , fly_folder: "micha_jump", attack_sprite: "micha_attack", attack_folder: "micha_attack")
             Player.setvalues(jumps: 2, jump_vel: 200, max_x_speed: 200, acc: 200, size: CharacterSize, anim_speed: 6)
+            set_filtering_mode(fileNamed: "ocean", node: backround)
             
         }else if cn == 4{
             Player.setAnimations(run_sprite: "elunwalk", run_folder: "elunmaskwalk", fly_sprite:"elunjump" , fly_folder: "elunmaskjump", attack_sprite: "s_", attack_folder: "elunattack")
             Player.setvalues(jumps: 2, jump_vel: 200, max_x_speed: 200, acc: 200, size: CharacterSize, anim_speed: 1)
+            set_filtering_mode(fileNamed: "space2", node: backround)
            
         }
-        set_filtering_mode(fileNamed: "barnSwag", node: backround)
+        
         addChild(Platform)
         addChild(Player)
         addChild(Left_Arrow)
