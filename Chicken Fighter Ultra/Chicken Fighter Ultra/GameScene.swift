@@ -53,6 +53,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var crate = SKSpriteNode()
     var Mute = false
     var MuteBttn = SKSpriteNode()
+    var heartback = SKSpriteNode()
+    var healthlabel = SKLabelNode(fontNamed: "AvenirNext-Bold")
     
     override func didMove(to view: SKView) {
         Player.setvalues(jumps: 2, jump_vel: 200, max_x_speed: 200, acc: 200, size: CharacterSize, anim_speed: 1)
@@ -130,6 +132,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         set_filtering_mode(fileNamed: "crate", node: crate)
         set_filtering_mode(fileNamed: "heart", node: heart)
         set_filtering_mode(fileNamed: "Mute", node: MuteBttn)
+        set_filtering_mode(fileNamed: "emptyheart", node: heartback)
     }
     
     func set_sizes(){
@@ -144,11 +147,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         charbut3.size = CGSize(width: 80, height: 80)
         charbut4.size = CGSize(width: 80, height: 80)
         dummy.size = CharacterSize
-        backround.size = CGSize(width: 800, height: 600)
+        backround.size = CGSize(width: 800, height: 541)
         label.fontSize = 30
         label.fontColor = UIColor.black
         label.zPosition = 100
+        healthlabel.fontSize = 30
+        healthlabel.fontColor = UIColor.black
         heart.size = CharacterSize
+        heartback.size = CharacterSize
         crate.size = buttonSize
         MuteBttn.size = buttonSize
     }
@@ -214,6 +220,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Left_Arrow.position = CGPoint(x: -300, y: -200)
         heart.position = CGPoint(x: -300, y: 200)
         heart.zPosition = 9999
+        healthlabel.position = CGPoint(x: -250, y: 150)
+        healthlabel.zPosition = 10000
+        heartback.position = CGPoint(x: -300, y: 200)
+        heartback.zPosition = 9998
         Right_Arrow.position = CGPoint(x: -200,y: -200)
         RightWall.position = CGPoint(x: 435, y: 0)
         jump_button.position = CGPoint(x: 200, y: -200)
@@ -250,7 +260,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             Player.setvalues(jumps: 2, jump_vel: 200, max_x_speed: 200, acc: 200, size: CharacterSize, anim_speed: 1)
            
         }
-        set_filtering_mode(fileNamed: "coolBarn", node: backround)
+        set_filtering_mode(fileNamed: "barnSwag", node: backround)
         addChild(Platform)
         addChild(Player)
         addChild(Left_Arrow)
@@ -262,7 +272,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(Punch_button)
         addChild(dummy)
         addChild(heart)
-        
+        addChild(heartback)
+        addChild(healthlabel)
         addChild(label)
     }
     
@@ -353,7 +364,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             audioPunch?.volume = 1
         }
        
-        
+        healthlabel.text = "\(Int(heart.alpha * 100))%"
       
         if heart.alpha <= 0.2{
             setup_game_over()

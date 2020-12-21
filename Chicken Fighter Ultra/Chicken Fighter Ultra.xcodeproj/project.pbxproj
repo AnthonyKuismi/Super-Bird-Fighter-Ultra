@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		762A0D90258131A2009ECAB2 /* ChickenBossWalk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 762A0D8F258131A2009ECAB2 /* ChickenBossWalk.atlas */; };
 		762A0D9325817255009ECAB2 /* shieldsound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 762A0D9225817255009ECAB2 /* shieldsound.mp3 */; };
-		762A0D982581785F009ECAB2 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 762A0D972581785F009ECAB2 /* GameScene.sks */; };
 		762A0D9F25827EE2009ECAB2 /* elunattack.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 762A0D9E25827EE2009ECAB2 /* elunattack.atlas */; };
 		762A0DA32583C532009ECAB2 /* clown.png in Resources */ = {isa = PBXBuildFile; fileRef = 762A0DA22583C532009ECAB2 /* clown.png */; };
 		762A0DA62583C89E009ECAB2 /* realwoah.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 762A0DA52583C89E009ECAB2 /* realwoah.mp3 */; };
@@ -23,6 +22,7 @@
 		768A2F0B2549C3C700121FBD /* SpriteKitContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768A2F0A2549C3C700121FBD /* SpriteKitContainer.swift */; };
 		76968C692566CB2000AAF305 /* goose_flying_good.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 76968C682566CB2000AAF305 /* goose_flying_good.atlas */; };
 		76968C6C2566CB3F00AAF305 /* gooseMove.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 76968C6B2566CB3F00AAF305 /* gooseMove.atlas */; };
+		76AB98542590F86400EB6AA0 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 76AB98532590F86300EB6AA0 /* GameScene.sks */; };
 		76B15E8C2576A3A200A5F507 /* chicken_theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 76B15E8B2576A3A200A5F507 /* chicken_theme.mp3 */; };
 		76B15E8F2576A41800A5F507 /* micha_walk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 76B15E8E2576A41800A5F507 /* micha_walk.atlas */; };
 		76B15E922576A45500A5F507 /* micha_jump.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 76B15E912576A45500A5F507 /* micha_jump.atlas */; };
@@ -44,7 +44,6 @@
 /* Begin PBXFileReference section */
 		762A0D8F258131A2009ECAB2 /* ChickenBossWalk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = ChickenBossWalk.atlas; path = ../../../../../Downloads/ChickenBossWalk.atlas; sourceTree = "<group>"; };
 		762A0D9225817255009ECAB2 /* shieldsound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = shieldsound.mp3; path = ../../../../../Downloads/shieldsound.mp3; sourceTree = "<group>"; };
-		762A0D972581785F009ECAB2 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = GameScene.sks; path = ../../../../../.Trash/GameScene.sks; sourceTree = "<group>"; };
 		762A0D9E25827EE2009ECAB2 /* elunattack.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = elunattack.atlas; path = ../../../../../Downloads/elunattack.atlas; sourceTree = "<group>"; };
 		762A0DA22583C532009ECAB2 /* clown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = clown.png; path = ../../../../../Downloads/clown.png; sourceTree = "<group>"; };
 		762A0DA52583C89E009ECAB2 /* realwoah.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = realwoah.mp3; path = ../../../../../Downloads/realwoah.mp3; sourceTree = "<group>"; };
@@ -58,6 +57,7 @@
 		768A2F0A2549C3C700121FBD /* SpriteKitContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteKitContainer.swift; sourceTree = "<group>"; };
 		76968C682566CB2000AAF305 /* goose_flying_good.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = goose_flying_good.atlas; path = ../../../../../Desktop/goose_flying_good.atlas; sourceTree = "<group>"; };
 		76968C6B2566CB3F00AAF305 /* gooseMove.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = gooseMove.atlas; path = ../../../../../Desktop/gooseMove.atlas; sourceTree = "<group>"; };
+		76AB98532590F86300EB6AA0 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		76B15E8B2576A3A200A5F507 /* chicken_theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = chicken_theme.mp3; path = ../../../../../Downloads/chicken_theme.mp3; sourceTree = "<group>"; };
 		76B15E8E2576A41800A5F507 /* micha_walk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = micha_walk.atlas; path = ../../../../../Downloads/micha_walk.atlas; sourceTree = "<group>"; };
 		76B15E912576A45500A5F507 /* micha_jump.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = micha_jump.atlas; path = ../../../../../Downloads/micha_jump.atlas; sourceTree = "<group>"; };
@@ -122,8 +122,8 @@
 				76968C6B2566CB3F00AAF305 /* gooseMove.atlas */,
 				76968C682566CB2000AAF305 /* goose_flying_good.atlas */,
 				76E35F97254719FA00726ADA /* AppDelegate.swift */,
-				762A0D972581785F009ECAB2 /* GameScene.sks */,
 				76E35F9B254719FA00726ADA /* Actions.sks */,
+				76AB98532590F86300EB6AA0 /* GameScene.sks */,
 				76E35F9D254719FA00726ADA /* GameScene.swift */,
 				767E3A5025657C5D00840448 /* Character.swift */,
 				76F62150254BB61800703779 /* PlayerWalkDust.sks */,
@@ -208,7 +208,6 @@
 				762A0DA32583C532009ECAB2 /* clown.png in Resources */,
 				76968C692566CB2000AAF305 /* goose_flying_good.atlas in Resources */,
 				76B468AA2577FF74002FDD9B /* punch1.mp3 in Resources */,
-				762A0D982581785F009ECAB2 /* GameScene.sks in Resources */,
 				762A0DA62583C89E009ECAB2 /* realwoah.mp3 in Resources */,
 				76FE6C84257556960017B13D /* goose_gust.atlas in Resources */,
 				7670BD6D257E9122007BDCAC /* elunmaskjump.atlas in Resources */,
@@ -219,6 +218,7 @@
 				76B15E8C2576A3A200A5F507 /* chicken_theme.mp3 in Resources */,
 				76B468A72577FEE4002FDD9B /* jump1.mp3 in Resources */,
 				76968C6C2566CB3F00AAF305 /* gooseMove.atlas in Resources */,
+				76AB98542590F86400EB6AA0 /* GameScene.sks in Resources */,
 				765ECAF0256C1E3600E7AC78 /* Penguin_fly.atlas in Resources */,
 				762A0D90258131A2009ECAB2 /* ChickenBossWalk.atlas in Resources */,
 				76E35FA5254719FD00726ADA /* Assets.xcassets in Resources */,
