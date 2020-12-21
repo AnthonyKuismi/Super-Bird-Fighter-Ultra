@@ -22,7 +22,7 @@
 		768A2F0B2549C3C700121FBD /* SpriteKitContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768A2F0A2549C3C700121FBD /* SpriteKitContainer.swift */; };
 		76968C692566CB2000AAF305 /* goose_flying_good.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 76968C682566CB2000AAF305 /* goose_flying_good.atlas */; };
 		76968C6C2566CB3F00AAF305 /* gooseMove.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 76968C6B2566CB3F00AAF305 /* gooseMove.atlas */; };
-		76AB98542590F86400EB6AA0 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 76AB98532590F86300EB6AA0 /* GameScene.sks */; };
+		76AB98652591033C00EB6AA0 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 76AB98642591033C00EB6AA0 /* GameScene.sks */; };
 		76B15E8C2576A3A200A5F507 /* chicken_theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 76B15E8B2576A3A200A5F507 /* chicken_theme.mp3 */; };
 		76B15E8F2576A41800A5F507 /* micha_walk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 76B15E8E2576A41800A5F507 /* micha_walk.atlas */; };
 		76B15E922576A45500A5F507 /* micha_jump.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 76B15E912576A45500A5F507 /* micha_jump.atlas */; };
@@ -57,7 +57,7 @@
 		768A2F0A2549C3C700121FBD /* SpriteKitContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteKitContainer.swift; sourceTree = "<group>"; };
 		76968C682566CB2000AAF305 /* goose_flying_good.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = goose_flying_good.atlas; path = ../../../../../Desktop/goose_flying_good.atlas; sourceTree = "<group>"; };
 		76968C6B2566CB3F00AAF305 /* gooseMove.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = gooseMove.atlas; path = ../../../../../Desktop/gooseMove.atlas; sourceTree = "<group>"; };
-		76AB98532590F86300EB6AA0 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		76AB98642591033C00EB6AA0 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = GameScene.sks; path = "../../../../../Desktop/Cyber Security/xCode/Rocketeer/Rocketeer/GameScene.sks"; sourceTree = "<group>"; };
 		76B15E8B2576A3A200A5F507 /* chicken_theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = chicken_theme.mp3; path = ../../../../../Downloads/chicken_theme.mp3; sourceTree = "<group>"; };
 		76B15E8E2576A41800A5F507 /* micha_walk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = micha_walk.atlas; path = ../../../../../Downloads/micha_walk.atlas; sourceTree = "<group>"; };
 		76B15E912576A45500A5F507 /* micha_jump.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = micha_jump.atlas; path = ../../../../../Downloads/micha_jump.atlas; sourceTree = "<group>"; };
@@ -123,9 +123,9 @@
 				76968C682566CB2000AAF305 /* goose_flying_good.atlas */,
 				76E35F97254719FA00726ADA /* AppDelegate.swift */,
 				76E35F9B254719FA00726ADA /* Actions.sks */,
-				76AB98532590F86300EB6AA0 /* GameScene.sks */,
 				76E35F9D254719FA00726ADA /* GameScene.swift */,
 				767E3A5025657C5D00840448 /* Character.swift */,
+				76AB98642591033C00EB6AA0 /* GameScene.sks */,
 				76F62150254BB61800703779 /* PlayerWalkDust.sks */,
 				76B4689F2577F994002FDD9B /* OW.mp3 */,
 				76B468A62577FEE4002FDD9B /* jump1.mp3 */,
@@ -206,6 +206,7 @@
 				76B15E922576A45500A5F507 /* micha_jump.atlas in Resources */,
 				762A0D9F25827EE2009ECAB2 /* elunattack.atlas in Resources */,
 				762A0DA32583C532009ECAB2 /* clown.png in Resources */,
+				76AB98652591033C00EB6AA0 /* GameScene.sks in Resources */,
 				76968C692566CB2000AAF305 /* goose_flying_good.atlas in Resources */,
 				76B468AA2577FF74002FDD9B /* punch1.mp3 in Resources */,
 				762A0DA62583C89E009ECAB2 /* realwoah.mp3 in Resources */,
@@ -218,7 +219,6 @@
 				76B15E8C2576A3A200A5F507 /* chicken_theme.mp3 in Resources */,
 				76B468A72577FEE4002FDD9B /* jump1.mp3 in Resources */,
 				76968C6C2566CB3F00AAF305 /* gooseMove.atlas in Resources */,
-				76AB98542590F86400EB6AA0 /* GameScene.sks in Resources */,
 				765ECAF0256C1E3600E7AC78 /* Penguin_fly.atlas in Resources */,
 				762A0D90258131A2009ECAB2 /* ChickenBossWalk.atlas in Resources */,
 				76E35FA5254719FD00726ADA /* Assets.xcassets in Resources */,
